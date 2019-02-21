@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>PRODUCT</title>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.2/dist/vue.js"></script>
+
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#"></a>
+        </div>
+        <ul class="nav navbar-nav">
+          <!-- <li class="#"><a href="#">Home</a></li>
+          <li><a href="#">Page 1</a></li>
+          <li><a href="#">Page 2</a></li>
+          <li><a href="#">Page 3</a></li> -->
+        </ul>
+      </div>
+    </nav>
+<div id="app">
+<div class="product">
+<div class="login">
+  <form action="#">
+  <div class="form-group">
+    <label for="email">Email address:</label>
+    <input type="email" class="form-control" id="email">
+  </div>
+  <div class="form-group">
+    <label for="pwd">Password:</label>
+    <input type="password" class="form-control" id="pwd">
+  </div>
+  <div class="checkbox">
+    <label><input type="checkbox"> Remember me</label>
+  </div>
+  <button type="submit" class="btn btn-default">Submit</button>
+</form>
+</div>
+<div class="product-image">
+<img :src="image" style="width:300px;height:300px;">
+<div class="product-info">
+<h1>{{ product }}</h1>
+<p v-if="inventory > 10">In Stock</p>
+<p v-else-if="inventory < 10 && inventory > 0">Almost Sold Out</p>
+<p v-else>Out of Stock</p>
+<ul>
+  <li v-for="detail in details">{{ detail }}</li>
+</ul>
+<div v-for="variant in variants" :key="variant.variantId" class="color-box" :style="{ backgroundColor: variant.variantColor}" @mouseover="updateProduct(variant.variantImage)">
+</div>
+<button type="button" class="btn btn-primary" @click="addToCart">Add to Cart</button>
+<div class="cart">
+<p>Cart({{  cart  }})</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script src="main.js"></script>
+  </body>
+</html>

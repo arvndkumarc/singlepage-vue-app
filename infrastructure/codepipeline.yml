@@ -1,0 +1,39 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Parameters:
+  Repository:
+    Type: String
+Resources:
+  CodePipelineIamRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: 2012-10-17
+          Statement:
+            - Effect: Allow
+              Principal:
+                Services: [codepipeline.amazonaws.com]
+              Action: ['sts:AssumeRole']
+      # Path: "/"
+      # Policies:
+      #   - Policies
+      RoleName: String
+  Pipeline:
+    Type: AWS::CodePipeline::Pipeline
+    Properties:
+      Name: String
+      RestartExecutionOnUpdate: false
+      RoleArn: !GetAtt CodePipelineIamRole.Arn
+      Stages:
+        - Actions:
+          - ActionTypeId:
+              Category: Source
+              Owner: AWS
+              Provider: CodeCommit
+              Version: 1.0.0
+            Configuration:
+              RepositoryName: !Ref Repository
+              BranchName: master
+            Name: Source
+            OutputArtifacts:
+              - Name: Source
+          Name: SoureBuildApproveDeploy

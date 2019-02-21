@@ -1,0 +1,21 @@
+.navbar-default {
+  background-color:#0a2b4e;
+  background-image: none;
+  background-repeat: no-repeat;
+ }
+ .product-image{
+   width: 500px;
+   height: 400px;
+ }
+ .product-info{
+   float: right;
+ }
+ .cart{
+   foat: right;
+ }
+.color-box{
+  width: 40px;
+  height: 40px;
+  margin-top: 5px;
+  margin-bottom: 7px;
+}
